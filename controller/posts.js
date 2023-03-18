@@ -1,3 +1,4 @@
+import { createNotification } from "../model/notification.js";
 import {
   getAllPosts,
   getPostsByStatus,
@@ -43,7 +44,16 @@ export const initPostCtrl = (req,res) =>{
         if(err){
             res.sendStatus(500)
         }else{
-            res.send(results)
+          const notification =`New Post initiatilized`
+          const notData = {message:notification}
+          createNotification(notData,(err,results)=>{
+              if(err){
+                  // do nothing 
+              }else{
+                  // 
+              }
+          })
+          res.send(results)
         }
     })
 }

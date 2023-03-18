@@ -1,3 +1,4 @@
+import { createNotification } from "../model/notification.js";
 import { getAllTags , getTagsById, addTagsToPost, HaveTags, updateTags,searchTags,
     AddNewTags,EditTags,removeTags,tagsPosts,tags_hasTags} from "../model/tags.js";
     
@@ -80,6 +81,15 @@ import { getAllTags , getTagsById, addTagsToPost, HaveTags, updateTags,searchTag
                 if(err){
                     res.status(500)
                 }else{
+                    const notification =`New Tag has been added: ${data.title}.`
+                    const notData = {message:notification}
+                    createNotification(notData,(err,results)=>{
+                        if(err){
+                            // do nothing 
+                        }else{
+                            // 
+                        }
+                    })
                     res.send(results)
                 }
             })        

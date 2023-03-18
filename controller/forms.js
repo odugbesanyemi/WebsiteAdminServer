@@ -33,9 +33,8 @@ export const addFormResponseCtrl =(req,res)=>{
             res.sendStatus(500)
         }else{
             // send notification to database
-            const notData = {
-                message:"You have a new form response. Go to the feedback page to repspond."
-            }
+            const notification =`Your form ${tableName} has a new response.`
+            const notData = {message:notification}
             createNotification(notData,(err,results)=>{
                 if(err){
                     // do nothing 

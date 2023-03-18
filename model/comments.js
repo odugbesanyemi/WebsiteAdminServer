@@ -1,7 +1,7 @@
 import db from "../config/dbConfig.js";
 
 export const getAllComments = (result)=>{
-    const sql = "SELECT comments.*,posts.post_title,users.username FROM comments INNER JOIN posts ON comments.post_id = posts.id INNER JOIN users ON comments.user_id = users.id"
+    const sql = "SELECT comments.*,posts.post_title,users.username FROM comments INNER JOIN posts ON comments.post_id = posts.id INNER JOIN users ON comments.user_id = users.id ORDER BY id ASC"
     db.query(sql,(err,response)=>{
         if(err){
             result(err,null)

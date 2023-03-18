@@ -13,7 +13,7 @@ import {
   getPostCategoriesCtrl,
   getPostByTypeCtrl,
 } from "../controller/posts.js";
-import { changePasswordCtrl, getAllSubscribersCtrl, getAllUsersCtrl, getUserByIdCtrl, setNewSubscriberCtrl, setNewUserCtrl, updateUsersCtrl } from "../controller/user.js";
+import { activateUserCtrl, changePasswordCtrl, getAllSubscribersCtrl, getAllUsersCtrl, getUserByIdCtrl, setNewSubscriberCtrl, setNewUserCtrl, updateUsersCtrl } from "../controller/user.js";
 import {
   getAllCategoriesCtrl,
   getCategoriesByIdCtrl,
@@ -36,6 +36,7 @@ import { getSitePreferenceCtrl, updateSitePreferenceCtrl } from "../controller/s
 import { changeDefaultCtrl, getAllTemplatesCtrl, getDefaultTemplateCtrl, getPostTypesCtrl, getPostTypesTemplatesCtrl, getTemplatesByIdCtrl } from "../controller/templates.js";
 import { deleteGalleryImageCtrl, getAllGalleryImagesCtrl, getGalleryCategoriesByIdCtrl, getGalleryCategoriesCtrl, getGalleryImagesByIdCtrl, removeGalleryCategoryCtrl, setGallerycategoryCtrl, setGalleryImagesCtrl, updateGalleryCategoryCtrl } from "../controller/gallery.js";
 import { createTokenCtrl, resetPasswordCtrl } from "../controller/reset_password.js";
+import { addPostLikesCtrl, getPostLikesCtrl, removePostLikesCtrl } from "../controller/post_meta.js";
 const router = express.Router();
 
 
@@ -51,6 +52,7 @@ router.post("/users",setNewUserCtrl)
 router.post("/user/:id",updateUsersCtrl)
 router.post("/user/profile/upload/:id",upload.single('file'),uploadProfileImageCtrl)
 router.post("/user/password/:id",changePasswordCtrl)
+router.post("/activate-user",activateUserCtrl)
 // categories
 router.get("/categories", getAllCategoriesCtrl);
 router.get("/categories/:id", getCategoriesByIdCtrl);
@@ -96,6 +98,10 @@ router.get("/comments",getAllCommentsCtrl)
 router.post("/comments/update/:id",updateCommentCtrl)
 router.post("/comments/delete/:id",delCommentCtrl)
 router.post("/comments/reply",replyCommentCtrl)
+// post_meta
+router.get("/comments/likes/:id",getPostLikesCtrl)
+router.post("/comments/likes",addPostLikesCtrl)
+router.post("/comments/likes/remove/:id",removePostLikesCtrl)
 // subscribers
 router.get("/subscribers",getAllSubscribersCtrl)
 router.post("/newsletter",newsletter)

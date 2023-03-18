@@ -1,7 +1,7 @@
 import db from "../config/dbConfig.js";
 
 export const getAllUsers=(result)=>{
-    const sql = "SELECT username,email,role,profile_image,datejoined,phone,bio FROM users"
+    const sql = "SELECT username,email,role,profile_image,datejoined,phone,bio,active FROM users"
     db.query(sql,(err,response)=>{
         if(err){
             result(err,null)
@@ -91,3 +91,4 @@ export const findUserByEmail = (email,result)=>{
         }
     })
 }
+
