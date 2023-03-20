@@ -21,7 +21,7 @@ export const uploadFIleToServer = async function (file) {
         // passphrase: 'your key passphrase',
       })
       await client.uploadFile(
-        `./${file.path}`,
+        `${file.path}`,
         `${config.path}/${file.filename}`,
         // options?: TransferOptions
       )
