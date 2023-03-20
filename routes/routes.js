@@ -80,7 +80,7 @@ router.get("/tags/remove/:id",removeTagsCtrl);
 router.get("/tags-has-posts",TagsPostsCtrl);
 // files
 router.get("/images", getAllImages);
-router.post("/uploadImages",saveImagesCtrl);
+router.post("/uploadImages",upload.array('files'),saveImagesCtrl);
 router.get("/files",getFilesCtrl);
 router.get("/files/quota",fileQuotaCtrl),
 router.post("/files/delete/:id",delFileCtrl)
