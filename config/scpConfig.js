@@ -11,7 +11,6 @@ export const config = {
 }
 
 export const uploadFIleToServer = async function (file) {
-    console.log(file.path)
     try {
       const client = await Client({
         host: config.host,
@@ -30,7 +29,6 @@ export const uploadFIleToServer = async function (file) {
     //   await client.uploadFile('./test1.txt', '/workspace/test1.txt')
       client.close() // remember to close connection after you finish
     } catch (e) {
-      console.log(e)
       console.log("this is an error",e)
     }
 }

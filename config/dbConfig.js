@@ -11,7 +11,8 @@ const db = mysql.createConnection({
 })
 
 db.connect((err)=>{
-    if(err) console.log('error connecting to database')
+    if(err) return console.log('error connecting to database');
+    return "success database connect"
 })
 
 export default db

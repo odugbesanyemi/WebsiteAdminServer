@@ -4,6 +4,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
+const mySecret = process.env['APP_PORT']
 import router from "./routes/routes.js";
 import cors from "cors";
 const app = express();

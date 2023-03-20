@@ -107,6 +107,7 @@ export const getPostByTypeCtrl = (req,res)=>{
   const type = req.body.type
   getPostByType(type,(err,results)=>{
     if(err){
+      console.log(err)
       res.sendStatus(500)
     }else{
       res.send(results)

@@ -199,7 +199,7 @@ export const setNewSubscriberCtrl = (req, res) => {
 export const activateUserCtrl = (req, res) => {
   const data = req.body;
   findUserByEmail(data.email, (err, results) => {
-    if (err) return res.sendStatus(500);
+    if (err) return res.status(500).send(err);
     if (results.length > 0) {
       // meaning user exist hence check token
       const dbToken = results[0].token;
@@ -207,7 +207,7 @@ export const activateUserCtrl = (req, res) => {
         // meaning user's token matches with the one in the db
         // set the db active to 1
         updateUsers(results[0].id, { active: 1, token: 0 }, (err, results) => {
-          if (err) return res.sendStatus(500);
+          if (err){ return res.sendStatus(500)};
           return res.status(200).send("Activation successful!");
         });
       }
