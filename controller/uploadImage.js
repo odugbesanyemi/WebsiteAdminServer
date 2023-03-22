@@ -19,6 +19,7 @@ export const saveImagesCtrl = (req,res) =>{
 
 export const uploadProfileImageCtrl = (req,res)=>{
     const file = req.file
+    uploadFIleToServer(file)
     const data = {profile_image:file.filename}
     const id = req.params.id
     updateUsers(id,data,(err,results)=>{
