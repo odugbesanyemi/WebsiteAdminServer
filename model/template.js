@@ -76,3 +76,24 @@ export const getDefaultTemplate = (data,result)=>{
         }
     })
 }
+
+export const setNewTemplate = (data,result)=>{
+    const sql = "INSERT INTO templates SET ?"
+    db.query(sql,data,(err,response)=>{
+        if(err){
+            result(err,null)
+        }else{
+            result(null,response)
+        }
+    })
+}
+
+export const delTemplate = (id,result)=>{
+    const sql = "DELETE FROM templates WHERE id = ?"
+    db.query(sql,id,(err,response)=>{
+        if(err){
+          return  result(err,null);
+        }
+        return result(null,response);
+    })
+}

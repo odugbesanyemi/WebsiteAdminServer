@@ -1,4 +1,4 @@
-import { getAllTemplates, getDefaultTemplate, getPostTypes, getPostTypesTemplates, getTemplatesById, setDefault, undoDefault } from "../model/template.js"
+import { delTemplate, getAllTemplates, getDefaultTemplate, getPostTypes, getPostTypesTemplates, getTemplatesById, setDefault, setNewTemplate, undoDefault } from "../model/template.js"
 
 export const getPostTypesCtrl =(req,res)=>{
     getPostTypes((err,results)=>{
@@ -75,5 +75,34 @@ export const getDefaultTemplateCtrl =(req,res)=>{
             return res.sendStatus(404)
         }
         return res.status(200).send(results)
+    })
+}
+
+export const setNewTemplateCtrl =(req,res)=>{
+    const data = req.body
+    if(data.default){
+        // meaning the user wants to set to default
+        undoDefault(data,(err,results)=>{
+            if(err){
+                return res.sendStatus(500)
+            }
+            return
+        })
+    }
+    setNewTemplate(data,(err,results)=>{
+        if(err){
+            return res.sendStatus(500)
+         }
+         return res.sendStatus(200)
+    })
+}
+
+export const deleteTemplateCtrl = (req,res)=>{
+    const id = req.params.id
+    delTemplate(id,(err,results)=>{
+        if(err){
+            return res.sendStatus(500)
+        }
+        return res.sendStatus(200)
     })
 }

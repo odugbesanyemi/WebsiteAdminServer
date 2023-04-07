@@ -33,7 +33,7 @@ import { createNotificationCtrl, getUserNotificationCtrl, updateUserNotification
 import { delCommentCtrl, getAllCommentsCtrl, replyCommentCtrl, updateCommentCtrl } from "../controller/comments.js";
 import { newsletter } from "../controller/mail.js";
 import { getSitePreferenceCtrl, updateSitePreferenceCtrl } from "../controller/site_preferences.js";
-import { changeDefaultCtrl, getAllTemplatesCtrl, getDefaultTemplateCtrl, getPostTypesCtrl, getPostTypesTemplatesCtrl, getTemplatesByIdCtrl } from "../controller/templates.js";
+import { changeDefaultCtrl, deleteTemplateCtrl, getAllTemplatesCtrl, getDefaultTemplateCtrl, getPostTypesCtrl, getPostTypesTemplatesCtrl, getTemplatesByIdCtrl, setNewTemplateCtrl } from "../controller/templates.js";
 import { deleteGalleryImageCtrl, getAllGalleryImagesCtrl, getGalleryCategoriesByIdCtrl, getGalleryCategoriesCtrl, getGalleryImagesByIdCtrl, removeGalleryCategoryCtrl, setGallerycategoryCtrl, setGalleryImagesCtrl, updateGalleryCategoryCtrl } from "../controller/gallery.js";
 import { createTokenCtrl, resetPasswordCtrl } from "../controller/reset_password.js";
 import { addPostLikesCtrl, getPostLikesCtrl, removePostLikesCtrl } from "../controller/post_meta.js";
@@ -116,6 +116,8 @@ router.get("/templates/:type/:id",getTemplatesByIdCtrl)
 router.get("/templates",getAllTemplatesCtrl)
 router.post("/templates/default",changeDefaultCtrl)
 router.post("/templates/default/get",getDefaultTemplateCtrl)
+router.post("/templates/add",setNewTemplateCtrl)
+router.get("/templates-delete/:id",deleteTemplateCtrl)
 // gallery plugin
 router.get('/gallery/categories',getGalleryCategoriesCtrl)
 router.get("/gallery/categories/:id",getGalleryCategoriesByIdCtrl)
